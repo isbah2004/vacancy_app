@@ -4,6 +4,7 @@ import 'package:vacancy_app/reusablewidgets/neomorphism_widget.dart';
 import 'package:vacancy_app/screens/detailscreen/detail_screen.dart';
 import 'package:vacancy_app/screens/homescreen/downloading_setup.dart';
 import 'package:vacancy_app/theme/theme.dart';
+import 'package:vacancy_app/utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,15 +24,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppTheme.whiteColor,
       appBar: AppBar(
-        actions: [
-          GestureDetector(
-            onTap: () async {
-              var data = await fetchFirestoreData('vacancies');
-              await generatePdf(data);
-            },
-            child: const Icon(Icons.download),
-          )
-        ],
+        // actions: [
+        //   GestureDetector(
+        //     onTap: () async {
+        //       var data = await fetchFirestoreData('vacancies');
+        //       await generatePdf(data);
+        //     },
+        //     child: const Icon(Icons.download),
+        //   )
+        // ],
+       
         centerTitle: true,
         title: Text(
           'Vacancies',
@@ -111,21 +113,39 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             );
                           },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 14),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: AppTheme.greyColor),
-                            alignment: Alignment.center,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  data['department'].toString(),
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                              ],
+                          child: Hero(tag: data['department'],
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 18),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: AppTheme.greyColor),
+                              alignment: Alignment.center,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const SizedBox(
+                                    width: 7,
+                                  ),
+                                  const SizedBox(
+                                    height: 25,
+                                    width: 25,
+                                    child: Image(
+                                        image:
+                                            AssetImage(Constants.jobSearchIcon)),
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  Text(
+                                    data['department'].toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
