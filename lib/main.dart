@@ -24,7 +24,7 @@ void main() async {
       ChangeNotifierProvider(create: (context) => HomeIndexProvider()),
       ChangeNotifierProvider(create: (context) => UploadProvider()),
     ],
-    child: MaterialApp(
+    child: MaterialApp(title:'Vacancies',
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
       theme: AppTheme.lightTheme,

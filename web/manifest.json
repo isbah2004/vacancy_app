@@ -1,11 +1,11 @@
 {
-    "name": "vacancy_app",
-    "short_name": "vacancy_app",
+    "name": "Vacancies",
+    "short_name": "Vacancies",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Lotte chemicals Vacancies checker",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
